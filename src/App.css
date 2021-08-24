@@ -46,8 +46,8 @@ footer {
   margin:0px 5px 0 10px;
 }
 .headerbutton2{
-  float: right;
   background-color: white;
+  float: right;
   border: none;
   color: #23807E;
   text-align: center;
@@ -145,7 +145,7 @@ footer {
 
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
 @media (max-width: 600px) {
-  nav, article {
+  nav, article, .image, .slider {
     width: 100%;
     height: auto;
   }

@@ -3,13 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import App from './App';
-import { BrowserRouter } from 'react-router-dom'
+import Registration from './Registration'
+import { BrowserRouter, Route, Switch  } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route path="/create" component={Registration} />
+      </Switch>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

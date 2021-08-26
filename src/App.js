@@ -21,7 +21,7 @@ function App() {
           
             <ImageSlider slides={SliderData} />
             <div class="btn">
-              <button class="createbutton2"><Link to="/create">CREATE ACCOUNT</Link></button>
+              <button class="createbutton2"><Link to="/create"  style={{ color: '#23807E', textDecoration: 'none' }}  >CREATE ACCOUNT</Link></button>
               <button class="createbutton" onClick={() => setmodalIsOpen(true)}>LOG IN</button>
             </div>
             <Modal 
@@ -51,12 +51,12 @@ function App() {
               }
               >
                   <div class="container">
-                      <input type="email" placeholder="Email" name="uname" required/>
+                      <input class="logininput" type="email" placeholder="Email" name="uname" required/>
                       <br/>
-                      <input type="password" placeholder="Password" name="psw" required/>
+                      <input class="logininput" type="password" placeholder="Password" name="psw" required/>
                       <br/>  
                       <button type="button" onClick={() => setmodalIsOpen(false)} class="cancelbtn">Cancel</button>
-                      <button class="loginbutton" type="submit">Log In</button>
+                      <button class="loginbutton" type="submit"><Link to="/home"  style={{ color: '#23807E', textDecoration: 'none' }}>Log In</Link></button>
                       <br/>
                   </div>
             </Modal>

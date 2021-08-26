@@ -1,29 +1,41 @@
 import React from 'react'
+import { Route, Switch, Link, useRouteMatch } from 'react-router-dom'
+import { Practitioner } from './Practitioner'
+import { Client } from './Client'
 
 
 function Registration() {
-    return(
-        <div className="container text-dark bg-info rounded">
-        <div className="mt-3 p-3">
 
-            <h3>PERSONAL INFORMATION</h3>
-                <h5>Full Name:</h5>
-                <div className="row g-3 align-items-center">
-                    <div className="col">
-                        <input className="form-control " name="Name" type="text" id="Fname" />
-                        <label class="text-secondary"  htmlFor="Fname">First Name</label>
+    let { path, url } = useRouteMatch();
+
+    return (
+        <div >
+            <div className="container text-dark bg-info rounded w-25 mt-5 containerregister">
+                <div className="mb-3 p-3">
+                    <div className="row g-3 align-items-center">
+                        <h1>Select:</h1>
                     </div>
-                <div className="form-group">
-                    <button  type="submit" className="btn btn-primary ">
-                        Submit
+                    <button type="submit"  class="practitionerbutton">
+                        <Link to={`${url}/practitioner`} style={{ color: '#FFF', textDecoration: 'none' }} >                   
+                            Practitioner
+                        </Link>
                     </button>
+
+                    <button type="submit" class="practitionerbutton">
+                        <Link to={`${url}/client`} style={{ color: '#FFF',textDecoration: 'none' }}>                   
+                            Client
+                        </Link>
+                    </button>
+
+                    
                 </div>
-            <br/>
             </div>
+          <Switch>
+            <Route path={`${path}/client`} component={Client}/>
+            <Route path={`${path}/practitioner`} component={Practitioner}/>
+          </Switch>
         </div>
-    </div>
-        
-    )
+      );
 }
 
 export default Registration;

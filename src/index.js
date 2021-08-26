@@ -4,15 +4,22 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import App from './App';
 import Registration from './Registration'
+import Home from './Home'
 import { BrowserRouter, Route, Switch  } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
+import { Practitioner } from './Practitioner';
+import { Client } from './Client';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={App} />
-        <Route path="/create" component={Registration} />
+        <Route path="/create" component={Registration}/>
+        <Route path="/home" component={Home}/>
+        <Route path="/practitioner" component={Practitioner}/>
+        <Route path="/client" component={Client}/>
       </Switch>
     </BrowserRouter>
   </React.StrictMode>,

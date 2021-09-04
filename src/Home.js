@@ -2,6 +2,7 @@ import React from 'react'
 import { Switch, Route, Link, useRouteMatch } from 'react-router-dom';
 import { ClientList } from './ClientList';
 import { Dashboard } from './Dashboard';
+import { CalendarView } from './CalendarView';
 
 function Home() {
 
@@ -40,7 +41,11 @@ function Home() {
                                     </button>     
                                 </Link>
                             <hr className="linehr"/>
-                            <button class="tablinks" onclick="contenttab(event, 'Calendar')" > Calendar</button>
+                            <Link to={`${url}/calendar`} > 
+                                    <button class="tablinks">             
+                                        Calendar
+                                    </button>     
+                                </Link>
                             <hr className="linehr"/>
                     </div>
                 </div>
@@ -49,6 +54,7 @@ function Home() {
                     <Switch>
                         <Route path={`${path}/dashboard`} component={Dashboard}/>
                         <Route path={`${path}/clientlist`} component={ClientList}/>
+                        <Route path={`${path}/calendar`} component={CalendarView}/>
                     </Switch>
                     </div>
                 </div>

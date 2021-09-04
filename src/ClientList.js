@@ -1,11 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 export const ClientList = () => {
     return(
-        <div class="tabcontent vh-100" style={{backgroundColor:"#BCE3E3 "}}>
+        <div class="vh-100" style={{backgroundColor:"#BCE3E3 "}}>
 
             <div class="row pt-5 px-4">
-                <div class="col-6">  <button class="addbutton">+ New Client </button> </div>
+                <div class="col-6">  
+                    <Link to="/createclient"  style={{ color: '#23807E', textDecoration: 'none' }}>
+                        <button class="addbutton">
+                            + New Client 
+                        </button> 
+                    </Link>
+                </div>
                 <div class="col-6">  <input type="text" class="myInput" placeholder="Search for names.." title="Type in a name"/></div>
             </div>
 
@@ -32,7 +40,7 @@ export const ClientList = () => {
                             Joshua C. Sacabon
                         </td>
                         <td class="col-3">
-                            Dr. Reyes
+                            08/02/2021
                         </td>
                         <td class="col-3">
                             08/02/2021

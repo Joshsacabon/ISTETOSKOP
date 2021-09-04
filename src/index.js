@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Switch  } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
 import { Practitioner } from './Practitioner';
 import { Client } from './Client';
+import ClientDetail from './ClientDetail';
 
 
 ReactDOM.render(
@@ -18,6 +19,7 @@ ReactDOM.render(
         <Route exact path="/" component={App} />
         <Route path="/create" component={Registration}/>
         <Route path="/home" component={Home}/>
+        <Route path="/createclient" component={ClientDetail}/>
         <Route path="/practitioner" component={Practitioner}/>
         <Route path="/client" component={Client}/>
       </Switch>

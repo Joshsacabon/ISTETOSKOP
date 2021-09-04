@@ -6,22 +6,34 @@ export const MedicalInfo = () => {
             <div className="infotext">Medical Information</div>
             <hr/>
             <div className="row g-3 align-items-center">
-            <label htmlFor="Birthday"><h5>Name:</h5></label>
+            <label htmlFor="summary"><h5>Summary</h5></label>
                     <div className="col">
-                        <input className="form-control " name="Fname" type="text" id="Fname" />
-                        <label class="text-secondary"  htmlFor="Fname">First Name</label>
+                        <input className="form-control " name="Fname" type="date" id="date" />
+                        <label class="text-secondary"  htmlFor="date">Date</label>
+                   </div>
+                    <div className="col">
+                        <input className="form-control " name="Fname" type="text" id="description" />
+                        <label class="text-secondary" htmlFor="description">Description</label>
                     </div>
                     <div className="col">
-                        <input className="form-control " name="Fname" type="text" id="Mname" />
-                        <label class="text-secondary" htmlFor="Mname">Middle Name</label>
+                        <input className="form-control " name="Fname" type="text" id="diagnosis"/>
+                        <label class="text-secondary" htmlFor="diagnosis">Diagnosis</label>
                     </div>
                     <div className="col">
-                        <input className="form-control " name="Fname" type="text" id="Lname"/>
-                        <label class="text-secondary" htmlFor="Lname">Last Name</label>
+                        <input className="form-control " name="Fname" type="date" id="tPerformed"/>
+                        <label class="text-secondary" htmlFor="tPerformed">Tests Performed</label>
                     </div>
                     <div className="col">
-                        <input className="form-control " name="Fname" type="date" id="Birthday"/>
-                        <label class="text-secondary" htmlFor="Lname">Birthday</label>
+                        <input className="form-control " name="Fname" type="date" id="tResults"/>
+                        <label class="text-secondary" htmlFor="tResults">Tests Results</label>
+                    </div>
+                    <div className="col">
+                        <input className="form-control " name="Fname" type="date" id="pAction"/>
+                        <label class="text-secondary" htmlFor="pAction">Prescribed Action</label>
+                    </div>
+                    <div className="col">
+                        <input className="form-control " name="Fname" type="date" id="pMedication"/>
+                        <label class="text-secondary" htmlFor="pMedication">Prescribed Medications</label>
                     </div>
                 </div>
                 <hr/>

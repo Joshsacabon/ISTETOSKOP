@@ -13,9 +13,9 @@ function Home() {
             <div class="row g-3 align-items-center">
                     <div className="headerhome">
                         <button class="headerbutton">Logout</button> 
-                        <div class="headerbutton"> | </div>
+                        <div class="headerbutton" style={{cursor: 'default '}}> | </div>
                         <button class="headerbutton">Contact Us</button>  
-                        <div class="headerbutton"> | </div>
+                        <div class="headerbutton" style={{cursor: 'default '}}> | </div>
                         <button class="headerbutton">About</button> 
                     </div>
                 </div>

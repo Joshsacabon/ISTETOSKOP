@@ -12,16 +12,16 @@ export const MedicalInfo = () => {
                         <label class="text-secondary"  htmlFor="Fname">First Name</label>
                     </div>
                     <div className="col">
-                        <input className="form-control " name="Fname" type="text" id="Mname" />
+                        <input className="form-control " name="Mname" type="text" id="Mname" />
                         <label class="text-secondary" htmlFor="Mname">Middle Name</label>
                     </div>
                     <div className="col">
-                        <input className="form-control " name="Fname" type="text" id="Lname"/>
+                        <input className="form-control " name="Lname" type="text" id="Lname"/>
                         <label class="text-secondary" htmlFor="Lname">Last Name</label>
                     </div>
                     <div className="col">
-                        <input className="form-control " name="Fname" type="date" id="Birthday"/>
-                        <label class="text-secondary" htmlFor="Lname">Birthday</label>
+                        <input className="form-control " name="birthday" type="date" id="Birthday"/>
+                        <label class="text-secondary" htmlFor="birthday">Birthday</label>
                     </div>
                 </div>
                 <hr/>
@@ -29,54 +29,54 @@ export const MedicalInfo = () => {
                     <label htmlFor="Birthday"><h5>Medical Condition:</h5></label>
                     <div class="col-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <label class="form-check-label" for="flexCheckDefault">Diabetes </label>
+                            <input class="form-check-input" type="checkbox" value="diabetes" id="mCondition1"/>
+                            <label class="form-check-label" for="mCondition1">Diabetes </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <label class="form-check-label" for="flexCheckDefault">Heart Disease </label>
+                            <input class="form-check-input" type="checkbox" value="heart disease" id="mCondition2"/>
+                            <label class="form-check-label" for="mCondition2">Heart Disease </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <label class="form-check-label" for="flexCheckDefault">Heart Failure </label>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <label class="form-check-label" for="flexCheckDefault">Stroke </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <label class="form-check-label" for="flexCheckDefault">Asthma </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <label class="form-check-label" for="flexCheckDefault">COPD </label>
+                            <input class="form-check-input" type="checkbox" value="heart failure" id="mCondition3"/>
+                            <label class="form-check-label" for="mCondition3">Heart Failure </label>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <label class="form-check-label" for="flexCheckDefault">Arthritis </label>
+                            <input class="form-check-input" type="checkbox" value="stroke" id="mCondition4"/>
+                            <label class="form-check-label" for="mCondition4">Stroke </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <label class="form-check-label" for="flexCheckDefault">Cancer </label>
+                            <input class="form-check-input" type="checkbox" value="asthma" id="mCondition5"/>
+                            <label class="form-check-label" for="mCondition5">Asthma </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <label class="form-check-label" for="flexCheckDefault">High Blood Pressure </label>
+                            <input class="form-check-input" type="checkbox" value="copd" id="mCondition6"/>
+                            <label class="form-check-label" for="mCondition6">COPD </label>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <label class="form-check-label" for="flexCheckDefault">Alzheumer's Disease/Dementia </label>
+                            <input class="form-check-input" type="checkbox" value="arthritis" id="mCondition7"/>
+                            <label class="form-check-label" for="mCondition7">Arthritis </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <label class="form-check-label" for="flexCheckDefault">Others (please specify) </label>
+                            <input class="form-check-input" type="checkbox" value="cancer" id="mCondition8"/>
+                            <label class="form-check-label" for="mCondition8">Cancer </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="high blood pressure" id="mCondition9"/>
+                            <label class="form-check-label" for="mCondition9">High Blood Pressure </label>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Alzheimer's disease" id="mCondition10"/>
+                            <label class="form-check-label" for="mCondition10">Alzheimer's Disease/Dementia </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="others" id="mCondition11"/>
+                            <label class="form-check-label" for="mCondition11">Others (please specify) </label>
                             <input className="form-control " name="Fname" type="text" id="EmailAdd"/>
                         </div>
                     </div>

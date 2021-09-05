@@ -77,7 +77,11 @@ export const MedicalInfo = () => {
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="others" id="mCondition11"/>
                             <label class="form-check-label" for="mCondition11">Others (please specify) </label>
+<<<<<<< HEAD
                             <input className="form-control " name="mCondition11" type="text" id="mCondition11"/>
+=======
+                            <input className="form-control " name="Fname" type="text" id="EmailAdd"/>
+>>>>>>> 882a25b81199450dc120eda46bc8ef971622b87c
                         </div>
                     </div>
                 </div>

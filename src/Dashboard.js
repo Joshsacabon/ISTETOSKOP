@@ -1,8 +1,40 @@
-import React, {useState} from 'react'
-import Modal from 'react-modal'
+import React, { useEffect, useState } from 'react'
+import { Switch, Link, Route, useRouteMatch } from 'react-router-dom';
+import { CreateSchedule } from './CreateSchedule';
+import { EditSchedule } from './EditSchedule';
+import { getScheds } from './api';
+
 
 export const Dashboard = () => {
-    const  [modalIsOpen , setmodalIsOpen ] = useState(false)
+    const [modalIsOpen , setmodalIsOpen ] = useState(false);
+    const [items, setItems] = useState([])
+
+    useEffect(() => {
+        getScheduleList()
+    }, [])
+
+
+
+    function getScheduleList() {
+        const fetchItems = async () => {
+            const scheds = await getScheds()
+            setItems(scheds)
+        }
+        fetchItems()
+    }
+
+    const onDelete = (id) =>{
+        fetch(`http://localhost:4000/home/dashboard/${id}` , {
+          method:'DELETE'
+        }).then((result) => result.json()).then((resp)=>{
+          console.warn(resp)
+          getScheduleList();
+        })
+      };
+
+
+    let { path, url } = useRouteMatch();
+
     return(
         <div class="tabcontent">
 
@@ -10,120 +42,53 @@ export const Dashboard = () => {
             <div class="row">
 
                 <div class="col-10">
-                    <div class="dashboardtext"> Today's Schedule <button class="plusbutton" onClick={() => setmodalIsOpen(true)}>+</button> </div>
+                    <div class="dashboardtext"> Today's Schedule     
+                        <Link to={`${url}/createschedule`}>  
+                            <button class="plusbutton" onClick={() => setmodalIsOpen(true)}>+</button> 
+                        </Link>
+                </div>
+                <Switch>
+                    <Route 
+                    path={`${path}/createschedule`}>
+                        <CreateSchedule  modalIsOpen={modalIsOpen}/>
+                    </Route>
+                    <Route 
+                    path={`${path}/edit/:id`}>
+                        <EditSchedule  modalIsOpen={modalIsOpen} />
+                    </Route>
+                </Switch>
 
-                    <Modal 
-              isOpen={modalIsOpen} 
-              onRequestClose={() => setmodalIsOpen(false)} 
-              style={
-                {
-                  overlay:{
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    backgroundColor: 'rgba(255,255,255,0)'
-                  },
-                  content:{
-                    height: '50%',
-                    width: '30%',
-                    top: 280,
-                    left: 800,
-                    borderRadius: 20,
-                    backgroundColor: '#2FBCBC',
-                    boxShadow: '0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)'
-                  }
-                }
-              }
-              >
-                  <div class="container" style={{ textAlign:'left', fontWeight: 'bold'}}>
-                    <div className="form-group">
-                        <div class="row g-3 align-items-center">
-                            <div class="col-6"> 
-                                <label htmlFor="fname" class="col-12">First Name:</label>
-                                <input
-                                className="form-control"
-                                name="fname"
-                                type="text"
-                                class="col-12"
-                                />
-                            </div>
-                            <div class="col-6"> 
-                                <label htmlFor="lname" class="col-12">Last Name:</label>
-                                <input
-                                className="form-control"
-                                name="lname"
-                                type="text"
-                                class="col-12"
-                                />
-                            </div>
-                        </div>
-
-                        <div class="infomodal">Information</div>
-                         <div class="row g-3 align-items-center">
-                            <div class="col-6"> 
-                                <label htmlFor="time" class="col-12">Time:</label>
-                                <input
-                                className="form-control"
-                                name="time"
-                                type="time"
-                                class="col-12"
-                                />
-                            </div>
-                            <div class="col-6"> 
-                                <label htmlFor="date" class="col-12">Date:</label>
-                                <input
-                                className="form-control"
-                                name="date"
-                                type="date"
-                                class="col-12"
-                                />
-                            </div>
-                        </div>
-                        <div class="row g-3 align-items-center">
-                            <div class="col-12"> 
-                                <label htmlFor="description">Description:</label>
-                                <textarea
-                                className="form-control"
-                                name="description"
-                                type="description"
-                                id="description"
-                                />
-                            </div>
-                         </div>
-                    </div>
-                        <div className="row g-3 align-items-center">
-                            <div class="col-12"> 
-                                <button type="submit" className="infobutton">
-                                    Add Schedule
-                                </button>
-                            </div>
-                        </div>
-                  </div>
-            </Modal>
-
-
-
-
-                
                     <table className="table table-borderless mt-3">
-                        <tbody>
-                        <button class="listbutton justify-content-center">
-                        <tr class="row g-3 align-items-center">
+                        <tbody>              
+                       { items.map( sched => ( 
+                       <button class="listbutton justify-content-center " onClick={() => setmodalIsOpen(true)}  >
+                        <div class="row">
+                        <div class="col-11">
+                           <Link to={`${url}/edit/${sched._id}`} style={{ textDecoration:'none', color:'#636262'}}>  
+                       
+                            <tr class="row g-3 align-items-center" key={sched._id} style={{textTransform:'capitalize'}}>
                             <td class="col-4">
-                                Joshua C. Sacabon
+                                {sched.fname} {sched.lname}
                             </td>
-                            <td class="col-4">
-                                date
+                            <td class="col-3">
+                                {sched.time}
                             </td>
-                            <td class="col-4">
-                                Patient
+                            <td class="col-3">
+                                {sched.date}
                             </td>
                             </tr>
+                            </Link>
+                        </div>
+                            <div class="col-1">
+                                <button class="xbutton" onClick={() => onDelete(sched._id)}>x</button>
+                            </div>
+                        </div>
                         </button>
+                        
+                        ))}
                         </tbody>
                     </table>
+
                 </div>
 
             </div>

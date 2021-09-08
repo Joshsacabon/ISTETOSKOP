@@ -12,7 +12,7 @@ function Home() {
         <div className="body1">
             <div class="row g-3 align-items-center">
                     <div className="headerhome">
-                        <button class="headerbutton">Logout</button> 
+                        <Link to="/"> <button class="headerbutton">Logout</button> </Link>
                         <div class="headerbutton" style={{cursor: 'default '}}> | </div>
                         <button class="headerbutton">Contact Us</button>  
                         <div class="headerbutton" style={{cursor: 'default '}}> | </div>
@@ -21,7 +21,7 @@ function Home() {
                 </div>
             <div className="row">
                 <div class="col-3 ">
-                    <div class="sidenav vh-100">
+                    <div class="sidenav">
                         <img class="imgalign" 
                             src="https://www.freeiconspng.com/thumbs/medical-icon-png/health-insurance-icon-png-3.png" 
                             title="Title of image" 

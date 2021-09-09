@@ -9,7 +9,7 @@ import { BrowserRouter, Route, Switch  } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
 import { Practitioner } from './Practitioner';
 import { Client } from './Client';
-import ClientDetail from './ClientDetail';
+import ClientDetail from './ClientPage/ClientDetail';
 
 
 ReactDOM.render(

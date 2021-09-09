@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRouteMatch, useHistory } from 'react-router-dom';
 import { AddSchedule } from "./AddSchedule";
-import { getSched,updateSched } from './api';
+import { getSched,updateSched } from './dashboardapi';
 
 export const EditSchedule = ({modalIsOpen }) =>{
     const match = useRouteMatch();
@@ -17,14 +17,14 @@ export const EditSchedule = ({modalIsOpen }) =>{
        fetchSched()
     },[match])
     
-    const onSubmit = async (data) => {
+    const onSubmitted = async (data) => {
         history.push('/home/dashboard')
         await updateSched(data, match.params.id)
     }
 
     return(
         sched  ? 
-        (<AddSchedule  modalIsOpen={modalIsOpen} sched={sched} onSubmit={onSubmit} />) 
+        (<AddSchedule  modalIsOpen={modalIsOpen} sched={sched} onSubmit={onSubmitted} />) 
         : 
         (<div>Loading...</div>)
     )

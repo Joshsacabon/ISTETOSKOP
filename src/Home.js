@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route, Link, useRouteMatch } from 'react-router-dom';
-import { ClientList } from './ClientList';
-import { Dashboard } from './Dashboard';
+import { ClientList } from './ClientPage/ClientList';
+import { Dashboard } from './DashboardPage/Dashboard';
 import { CalendarView } from './CalendarView';
 
 function Home() {

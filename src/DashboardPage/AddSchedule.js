@@ -6,17 +6,17 @@ export const AddSchedule = ({modalIsOpen,sched, onSubmit }) => {
 
     const {register, handleSubmit} = useForm({
         defaultValues:{
-            fname: sched ? sched.fname : " ",
-            lname: sched ? sched.lname : " ",
-            time: sched ? sched.time : " ",
-            date: sched ? sched.date : " ",
-            description: sched ? sched.description : " ",
+            fname: sched ? sched.fname : "",
+            lname: sched ? sched.lname : "",
+            time: sched ? sched.time : "",
+            date: sched ? sched.date : "",
+            description: sched ? sched.description : "",
 
         }
     })
 
 
-    const submitHandler = handleSubmit ((data) => {
+    const submitHandler =  handleSubmit ((data) => {
         onSubmit(data)
     })
 

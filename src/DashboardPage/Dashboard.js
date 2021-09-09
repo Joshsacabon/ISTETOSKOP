@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Switch, Link, Route, useRouteMatch } from 'react-router-dom';
 import { CreateSchedule } from './CreateSchedule';
 import { EditSchedule } from './EditSchedule';
-import { getScheds } from './api';
+import { getScheds } from './dashboardapi';
 
 
 export const Dashboard = () => {

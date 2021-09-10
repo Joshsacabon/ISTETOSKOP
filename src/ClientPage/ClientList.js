@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 
 export const ClientList = () => {
     return(
+
+        
         <div class="vh-100" style={{backgroundColor:"#BCE3E3 "}}>
 
             <div class="row pt-5 px-4">

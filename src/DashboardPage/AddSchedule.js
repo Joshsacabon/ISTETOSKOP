@@ -1,8 +1,10 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import Modal from 'react-modal'
+import { useHistory } from 'react-router'
 
 export const AddSchedule = ({modalIsOpen,sched, onSubmit }) => {
+    const history = useHistory()
 
     const {register, handleSubmit} = useForm({
         defaultValues:{
@@ -15,6 +17,9 @@ export const AddSchedule = ({modalIsOpen,sched, onSubmit }) => {
         }
     })
 
+    const ModalClose = () =>{
+        history.push("/home/dashboard")
+    }
 
     const submitHandler =  handleSubmit ((data) => {
         onSubmit(data)
@@ -102,10 +107,15 @@ export const AddSchedule = ({modalIsOpen,sched, onSubmit }) => {
                   </div>
                </div>
           </div>
-              <div className="row g-3 align-items-center">
-                  <div class="col-12">
+              <div className="row g-3 align-items-center text-center">
+                  <div class="col-6">
                       <button type="submit" className="infobutton" >
                           Save Schedule
+                      </button>
+                  </div>
+                  <div class="col-6">
+                      <button onClick={ModalClose} className="infobutton px-5">
+                          Cancel
                       </button>
                   </div>
               </div>

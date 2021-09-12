@@ -1,8 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { getClients } from './clientapi'
 
 
 export const ClientList = () => {
+    const [list, setList] = useState([])
+
+    useEffect(() => {
+        const fetchList = async () => {
+            const clients = await getClients()
+            setList(clients)
+        }
+        fetchList()
+    },[])
+
     return(
 
         
@@ -35,24 +46,40 @@ export const ClientList = () => {
             </div>
 
             <table className="table table-borderless mx-3">
-                <tbody>
-                    <button class="sortbutton">
-                    <tr class="row align-items-center">
+                <tbody> {
+                    list.map( client => (
+                        <Link to={`/editclient/${client.id}`} 
+                        style={{
+                            textDecoration: "none",
+                        }}>
+                    <button class="sortbutton" 
+                        style={{
+                            padding: "40px 10px",
+                            backgroundColor: "#f6f6f6",
+                            color: 'black',
+                            border: "3px solid #636262",
+                      }}>
+                       
+                    <tr class="row align-items-center" key={client.id}>
                         <td class="col-3">
-                            Joshua C. Sacabon
+                            {client.firstname}  {client.lastname}
                         </td>
                         <td class="col-3">
-                            08/02/2021
+                            {client.ctime}
                         </td>
                         <td class="col-3">
-                            08/02/2021
+                            {client.dtime}
                         </td>
                         <td class="col-3">
-                            Check-up
+                            {client.reason}
                         </td>
                         </tr>
+                       
                     </button>
-                </tbody>
+                    </Link>
+                   
+                    ))
+                }</tbody>
             </table>
 
     </div>     

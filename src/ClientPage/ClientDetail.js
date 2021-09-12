@@ -3,7 +3,7 @@ import { Switch, Route, Link, useRouteMatch } from 'react-router-dom';
 import { BasicInfo } from './BasicInfo';
 import { MedicalInfo } from './MedicalInfo';
 
-function ClientDetail({client}) {
+export const ClientDetail = ({client, onSubmitting}) => {
 
     let { path, url } = useRouteMatch();
 
@@ -45,9 +45,9 @@ function ClientDetail({client}) {
                 <div className="col-12">
                     <div class="clientpage">
                     <Switch>
-                        <Route path={`${path}/basicinformation`}>
-                            <BasicInfo client={client}/>
-                            </Route>
+                        <Route path={`${path}/basicinformation`} >
+                            <BasicInfo client={client} onSubmit={onSubmitting}/>    
+                        </Route>
                         <Route path={`${path}/medicalinformation`} component={MedicalInfo}/>
                     </Switch>
                     </div>
@@ -58,4 +58,3 @@ function ClientDetail({client}) {
 
     )
 }
-export default ClientDetail;

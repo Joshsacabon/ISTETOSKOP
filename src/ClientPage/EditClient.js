@@ -1,28 +1,33 @@
 import React, { useState, useEffect } from "react"
-import { ClientDetail } from './ClientDetail'
+import { ClientDetail } from "./ClientDetail";
+import { getClient, updateClient } from "./clientapi"
+import { useRouteMatch } from "react-router";
 
-export const EditClient = () => {
+function EditClient() {
+    const match = useRouteMatch()
     const[client, setClient ] = useState()
 
+    const onSubmitted = (data) => {
+        updateClient(data, match.params.id)
+    }
+ 
     useEffect(() => {
-        setClient({
-            fname: "Joshua",
-            mname: "Joshua",
-            lname: "Joshua",
-            birthday: "Joshua",
-            age: "Joshua",
-            emailadd: "Joshua",
-            cellnumber: "Joshua",
-            gender: "Joshua",
-            saddress: "Joshua",
-            city: "Joshua",
-            province: "Joshua",
-            zipcode: "Joshua",
-            country: "Joshua",
-        })
-    })
+        const  fetchClient = async () => {
+        const client = getClient(match.params.id)
+        setClient(client)
+       }
+       fetchClient()
+    },[match])
+
     
     return(
-        <ClientDetail client={client} />
+        client ? 
+         <div> 
+            <ClientDetail client={client} onSubmit={onSubmitted} />
+         </div>
+         :
+         <div> Loading</div>
     )
 }
+
+export default EditClient;

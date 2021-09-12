@@ -2,9 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const Sched = require("./models/Sched");
-const { response } = require("express");
+const Client = require("./models/Client");
 
 mongoose.connect("mongodb://127.0.0.1:27017/scheds", { useNewUrlParser: true });
+mongoose.connect("mongodb://127.0.0.1:27017/clients", { useNewUrlParser: true });
 
 mongoose.connection.once("open", () => {
   console.log("Mongodb connection established successfully");
@@ -83,6 +84,68 @@ app.delete('/home/dashboard/:id', async (req, res) => {
     if (sched) return res.json({ deleted: true });
     return res.json({ deleted: false });
 });
+
+app.get('/home/clientlist/', (req, res) => {
+  Client.find((err, clients) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(clients);
+      }
+    });
+  });
+
+
+app.post('/createclient/basicinformation', (req, res) => {
+    const client = new Client(req.body);
+    client
+      .save()
+      .then((client) => {
+        res.json(client);
+      })
+      .catch((err) => {
+        res.status(500).send(err.message);
+      });
+  });
+
+
+  app.get('/home/clientlist/:id', (req, res) => {
+    const id = req.params.id;
+    Client.findById(id, (err, client) => {
+      res.json(client);
+    });
+  });
+
+  app.post('/home/clientlist/:id', (req, res) => {
+    const id = req.params.id;
+    Client.findById(id, (err, client) => {
+      if (!client) {
+        res.status(404).send("client not found");
+      } else {
+        client.firstname = req.body.firstname; 
+        client.middlename = req.body.middlename; 
+        client.lastname = req.body.lastname; 
+        client.birthday = req.body.birthday; 
+        client.age = req.body.age; 
+        client.emailadd = req.body.emailadd; 
+        client.cellnumber = req.body.cellnumber; 
+        client.gender = req.body.gender; 
+        client.saddress = req.body.saddress; 
+        client.city = req.body.city; 
+        client.province = req.body.province; 
+        client.zipcode = req.body.zipcode; 
+        client.country = req.body.country;
+  
+        client
+          .save()
+          .then((client) => {
+            res.json(client);
+          })
+          .catch((err) => res.status(500).send(err.message));
+      }
+    });
+  });
+
 
 app.listen(PORT, () => {
     console.log("Server is running on port " + PORT);

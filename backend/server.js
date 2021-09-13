@@ -96,7 +96,7 @@ app.get('/home/clientlist/', (req, res) => {
   });
 
 
-app.post('/createclient/basicinformation', (req, res) => {
+app.post('/createclient', (req, res) => {
     const client = new Client(req.body);
     client
       .save()
@@ -145,6 +145,18 @@ app.post('/createclient/basicinformation', (req, res) => {
       }
     });
   });
+
+  app.delete('/home/clientlist/:id', async (req, res) => {
+    let id = req.params.id;
+    let client;
+    try {
+      client = await Client.findByIdAndDelete(id);
+    } catch (err) {
+      throw err;
+    }
+    if (client) return res.json({ deleted: true });
+    return res.json({ deleted: false });
+});
 
 
 app.listen(PORT, () => {

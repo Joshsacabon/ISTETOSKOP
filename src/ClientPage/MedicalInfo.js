@@ -1,27 +1,39 @@
 import React from 'react'
+import { useForm } from 'react-hook-form'
 
-export const MedicalInfo = () => {
+export const MedicalInfo = ({client, onSubmit}) => {
+
+    const {register, handleSubmit} = useForm({
+        defaultValues:  
+        {   ctime: client ? client.ctime: "",
+            dtime: client ? client.dtime: "",
+            reason: client ? client.reason: "",}
+    })
+
+    const submitHandler = handleSubmit ((data) => {
+        onSubmit(data);
+        alert("Information Saved!")
+    });
+
     return(
+        <form onSubmit={submitHandler}>
         <div class="infocontainer " style={{height:'155vh', fontWeight: 'bold'}}>
             <div className="infotext">Medical Information</div>
             <hr/>
             <div className="row g-3 align-items-center">
-            <label htmlFor="Birthday"><h5>Name:</h5></label>
+            <label htmlFor="Birthday"><h5>Information:</h5></label>
                     <div className="col">
-                        <input className="form-control " name="Fname" type="text" id="Fname" />
-                        <label class="text-secondary"  htmlFor="Fname">First Name</label>
+                        <label class="text-dark"  htmlFor="ctime">Client as of:</label>
+                        <input className="form-control "{...register("ctime")} type="date" id="ctime" />
                     </div>
                     <div className="col">
-                        <input className="form-control " name="Mname" type="text" id="Mname" />
-                        <label class="text-secondary" htmlFor="Mname">Middle Name</label>
+                            <label class="text-dark" htmlFor="dtime">Date of last visit</label>
+                        <input className="form-control " {...register("dtime")} type="date" id="dtime" />
+
                     </div>
                     <div className="col">
-                        <input className="form-control " name="Lname" type="text" id="Lname"/>
-                        <label class="text-secondary" htmlFor="Lname">Last Name</label>
-                    </div>
-                    <div className="col">
-                        <input className="form-control " name="birthday" type="date" id="Birthday"/>
-                        <label class="text-secondary" htmlFor="birthday">Birthday</label>
+                        <label class="text-dark" htmlFor="reason">Reason</label>
+                        <input className="form-control " {...register("reason")} type="text" id="reason"/>
                     </div>
                 </div>
                 <hr/>
@@ -84,11 +96,11 @@ export const MedicalInfo = () => {
                 <hr/>
                 <div className="row g-3 align-items-center">
                     <div className="col">
-                        <label htmlFor="EmailAdd">
+                        <label htmlFor="Allergies">
                             <h5>Allergies</h5>
                             <div class="text-secondary">(Food, medication and/or environmental)</div>
                         </label>
-                        <textarea  className="form-control " name="Fname" type="text" id="EmailAdd"/>
+                        <textarea  className="form-control " name="Allergies" type="text" id="Allergies"/>
                     </div>
                 </div>
                 <hr/>
@@ -225,6 +237,7 @@ export const MedicalInfo = () => {
                     </button>
                 </div>
             <br/>
-    </div>     
+    </div>
+    </form>
     )
 }

@@ -3,7 +3,7 @@ import { Switch, Route, Link, useRouteMatch } from 'react-router-dom';
 import { BasicInfo } from './BasicInfo';
 import { MedicalInfo } from './MedicalInfo';
 
-export const ClientDetail = ({client, onSubmitting}) => {
+export const ClientDetail = ({client, onSubmit}) => {
 
     let { path, url } = useRouteMatch();
 
@@ -46,9 +46,11 @@ export const ClientDetail = ({client, onSubmitting}) => {
                     <div class="clientpage">
                     <Switch>
                         <Route path={`${path}/basicinformation`} >
-                            <BasicInfo client={client} onSubmit={onSubmitting}/>    
+                            <BasicInfo client={client} onSubmit={onSubmit}/>    
                         </Route>
-                        <Route path={`${path}/medicalinformation`} component={MedicalInfo}/>
+                        <Route path={`${path}/medicalinformation`} >
+                            <MedicalInfo client={client} onSubmit={onSubmit}/> 
+                        </Route>
                     </Switch>
                     </div>
                 </div>

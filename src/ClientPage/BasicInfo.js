@@ -1,6 +1,5 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { useHistory } from 'react-router'
 
 
 
@@ -23,12 +22,11 @@ export const BasicInfo = ({client, onSubmit}) => {
             country: client ? client.country: "",}
     })
 
-    const history = useHistory()
 
     const submitHandler = handleSubmit ((data) => {
-        onSubmit(data)
-        history.push('/home/clientlist')
-    })
+        onSubmit(data);
+        alert("Information Saved!")
+    });
 
     return (
         <form onSubmit={submitHandler}>

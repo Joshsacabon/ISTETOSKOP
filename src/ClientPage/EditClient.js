@@ -7,8 +7,8 @@ function EditClient() {
     const match = useRouteMatch()
     const[client, setClient ] = useState()
 
-    const onSubmitted = (data) => {
-        updateClient(data, match.params.id)
+    const onSubmit = async (data) => {
+        await updateClient(data, match.params.id)
     }
  
     useEffect(() => {
@@ -23,7 +23,7 @@ function EditClient() {
     return(
         client ? 
          <div> 
-            <ClientDetail client={client} onSubmit={onSubmitted} />
+            <ClientDetail client={client} onSubmit={onSubmit} />
          </div>
          :
          <div> Loading</div>

@@ -1,6 +1,6 @@
 export const getClients = () => fetch("http://localhost:4000/home/clientlist").then(res => res.json())
 
-export const createClient = (client) => fetch("http://localhost:4000/createclient/basicinformation", {
+export const createClient = (client) => fetch("http://localhost:4000/createclient", {
   method: "POST",
   headers: {
     "Accept": "application/json",
